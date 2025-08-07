@@ -1,16 +1,15 @@
-# app.py
+# Home.py
 # Streamlit launcher: dashboard + quick links
-# Covers: System overview & session entrypoint [oai_citation:6‡IceBathprovisionalfinaldraft07272025.docx](file-service://file-WqBrfJeywJi439LRUtshTi)
+# Covers: System overview & session entrypoint
 
 import streamlit as st
 from services import devices, safety, optimizer, pms, esg, config
+
 st.set_page_config(
     page_title="Alyvated Dashboard",
     page_icon="🧊",
     layout="wide"
 )
-
-st.set_page_config(page_title="Alyvated Ice Bath Demo", page_icon="🧊", layout="wide")
 
 if "system" not in st.session_state:
     st.session_state.system = devices.SystemState()
@@ -33,15 +32,15 @@ st.subheader("Quick Actions")
 c1, c2, c3, c4 = st.columns(4)
 with c1:
     if st.button("Start Cold Session"):
-        devices.start_session(st.session_state.system, target_c=10.0, minutes=3)  # demo default [oai_citation:7‡IceBathprovisionalfinaldraft07272025.docx](file-service://file-WqBrfJeywJi439LRUtshTi)
+        devices.start_session(st.session_state.system, target_c=10.0, minutes=3)
 with c2:
     if st.button("Start Hot Contrast"):
-        devices.switch_mode(st.session_state.system, "HOT")  # dual-mode [oai_citation:8‡IceBathprovisionalfinaldraft07272025.docx](file-service://file-WqBrfJeywJi439LRUtshTi)
+        devices.switch_mode(st.session_state.system, "HOT")
 with c3:
     if st.button("Emergency Drain"):
-        devices.emergency_drain(st.session_state.system)  # safety override [oai_citation:9‡IceBathprovisionalfinaldraft07272025.docx](file-service://file-WqBrfJeywJi439LRUtshTi)
+        devices.emergency_drain(st.session_state.system)
 with c4:
     if st.button("Optimize Chill Now"):
-        optimizer.apply_prechill(st.session_state.system)  # predictive chill [oai_citation:10‡IceBathprovisionalfinaldraft07272025.docx](file-service://file-WqBrfJeywJi439LRUtshTi)
+        optimizer.apply_prechill(st.session_state.system)
 
 st.info("Use the left sidebar pages to explore individual modules.")
