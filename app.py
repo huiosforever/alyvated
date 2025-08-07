@@ -4,6 +4,11 @@
 
 import streamlit as st
 from services import devices, safety, optimizer, pms, esg, config
+st.set_page_config(
+    page_title="Alyvated Dashboard",
+    page_icon="🧊",
+    layout="wide"
+)
 
 st.set_page_config(page_title="Alyvated Ice Bath Demo", page_icon="🧊", layout="wide")
 
